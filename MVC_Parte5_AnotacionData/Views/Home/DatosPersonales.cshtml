@@ -1,4 +1,4 @@
-﻿@model MVC_Parte5_AnotacionData.Models.ClsDatos
+﻿@model MVC_Parte5_AnotacionData.Models.DatosPersonales
 
 @{
     Layout = null;
@@ -12,31 +12,30 @@
     <title>DatosPersonales</title>
 </head>
 <body>
-    <div> 
-        <table>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nombre)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Apellido)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Edad)
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    @Html.DisplayFor(model => model.Nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Apellido)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Edad)
-                </td>
-            </tr>
-        </table>
+    <div>
+        <h3>Ingrese los Datos</h3>
+        @using (Html.BeginForm("MostrarDatos", "Home", FormMethod.Post))
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="datosPersonales">
+            <div>
+            @Html.LabelFor(m => m.Nombre, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger" })
+            </div><br />
+            <div>
+            @Html.LabelFor(m => m.Apellido, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Apellido, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Apellido, "", new { @class = "text-danger" })
+            </div><br />
+            <div>
+            @Html.LabelFor(m => m.Edad, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Edad, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Edad, "", new { @class = "text-danger" })
+            </div><br />
+        </div>
+        <input type="submit" value="Enviar" />
+        }
     </div>
 </body>
 </html>

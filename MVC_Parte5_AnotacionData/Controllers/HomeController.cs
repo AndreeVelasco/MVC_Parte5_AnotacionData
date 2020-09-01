@@ -1,4 +1,5 @@
-﻿using MVC_Parte5_AnotacionData.Models;
+﻿using Microsoft.SqlServer.Server;
+using MVC_Parte5_AnotacionData.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,16 +16,36 @@ namespace MVC_Parte5_AnotacionData.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult DatosPersonales(ClsDatos obj)
+        public ActionResult DatosPersonales(DatosEmail obj)
         {
             if(ModelState.IsValid)
             {
-                return View(obj);
+                string email = obj.Email;
+                string pass = obj.Password;
+                if(email=="apandcan@gmail.com"&&pass=="123")
+                {
+                    return View();
+                }
+                else
+                {
+                    return View("Index");
+                }
             }
             else
             {
                 return View("Index");
             }           
+        }
+        public ActionResult MostrarDatos(DatosPersonales obj)
+        {
+            if (ModelState.IsValid)
+            {
+                return View(obj);
+            }
+            else
+            {
+                return View("DatosPersonales");
+            }
         }
     }
 }
