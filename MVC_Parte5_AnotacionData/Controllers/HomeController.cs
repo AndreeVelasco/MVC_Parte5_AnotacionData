@@ -22,7 +22,7 @@ namespace MVC_Parte5_AnotacionData.Controllers
             {
                 string email = obj.Email;
                 string pass = obj.Password;
-                if(email=="apandcan@gmail.com"&&pass=="123")
+                if(email=="apandcan@gmail.com"&&pass=="123456")
                 {
                     return View();
                 }
